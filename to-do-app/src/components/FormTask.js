@@ -13,13 +13,13 @@ function FormTask({ addTask }) {
 
   return (
     <Form onSubmit={ handleSubmit }> 
-		<Form.Control
-			type="text"
-			className="input"
-			value={value}
-			onChange={e => setValue(e.target.value)}
-			placeholder="Adicionar uma tarefa"
-		/>
+      <input
+        type="text"
+        className="input"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        placeholder="Adicionar uma tarefa"
+      />
       <Button className="button" variant="primary mb-3" type="submit">Adicionar</Button>
     </Form>
   );

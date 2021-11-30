@@ -40,7 +40,7 @@ function App() {
         </header>
         <FormTask addTask={ addTask } />
 
-        <div>
+        <div className="tasks">
           {tasks.map((task, index) => (
             <Card>
               <Card.Body>
