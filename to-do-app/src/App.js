@@ -10,29 +10,34 @@ import './App.css';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-    const addTask = text => {
-      const newTasks = [...tasks, { text, isDone: false }];
-      setTasks(newTasks);
-      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
-    }
+  const addTask = text => {
+    const newTasks = [...tasks, { text, isDone: false }];
+    setTasks(newTasks);
+    localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
+  }
 
-    const markTaskDone = index => {
-      const newTasks = [...tasks];
-      newTasks[index].isDone = !(newTasks[index].isDone);
-      setTasks(newTasks);
-      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
-    }
+  const markTaskDone = index => {
+    const newTasks = [...tasks];
+    newTasks[index].isDone = !(newTasks[index].isDone);
+    setTasks(newTasks);
+    localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
+  }
 
-    const removeTask = index => {
-      const newTasks = [...tasks];
-      newTasks.splice(index, 1);
-      setTasks(newTasks);
-      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
-    }
+  const removeTask = index => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+    localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
+  }
 
+  window.addEventListener('load', () => {
+    const newTasks = JSON.parse(localStorage.getItem('@to-do-app/list'));
+    setTasks(newTasks);
+  });
+ 
   return (
     <div className="App">
       <div className="container">
