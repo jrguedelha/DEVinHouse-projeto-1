@@ -32,7 +32,7 @@ function App() {
 
   window.addEventListener('load', () => {
     const newTasks = JSON.parse(localStorage.getItem('@to-do-app/list'));
-    setTasks(newTasks);
+    if (newTasks) setTasks(newTasks);
   });
  
   return (
