@@ -14,7 +14,6 @@ function App() {
     const newTasks = [...tasks, { text, isDone: false }];
     setTasks(newTasks);
     localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
   }
 
   const markTaskDone = index => {
@@ -22,7 +21,6 @@ function App() {
     newTasks[index].isDone = !(newTasks[index].isDone);
     setTasks(newTasks);
     localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
   }
 
   const removeTask = index => {
@@ -30,7 +28,6 @@ function App() {
     newTasks.splice(index, 1);
     setTasks(newTasks);
     localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
-    console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
   }
 
   window.addEventListener('load', () => {
