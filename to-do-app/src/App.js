@@ -8,28 +8,29 @@ import './App.css';
 
 
 function App() {
-  const [tasks, setTasks] = useState([
-    {
-      text: "Esta é uma tarefa de exemplo",
-      isDone: false
-    }
-    ]);
+  const [tasks, setTasks] = useState([]);
 
     const addTask = text => {
-      const newTasks = [...tasks, { text }];
+      const newTasks = [...tasks, { text, isDone: false }];
       setTasks(newTasks);
+      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
     }
 
     const markTaskDone = index => {
       const newTasks = [...tasks];
-      newTasks[index].isDone = true;
+      newTasks[index].isDone = !(newTasks[index].isDone);
       setTasks(newTasks);
+      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
     }
 
     const removeTask = index => {
       const newTasks = [...tasks];
       newTasks.splice(index, 1);
       setTasks(newTasks);
+      localStorage.setItem('@to-do-app/list', JSON.stringify(newTasks));
+      console.log(JSON.parse(localStorage.getItem('@to-do-app/list')));
     }
 
   return (
@@ -43,7 +44,6 @@ function App() {
         <div className="tasks">
           {tasks.map((task, index) => (
             <Card>
-              <Card.Body>
                 <Task
                   key= {index}
                   index={index}
@@ -51,7 +51,6 @@ function App() {
                   markTaskDone={markTaskDone}
                   removeTask={removeTask}
                 />
-              </Card.Body>
             </Card>
           ))}
         </div>
